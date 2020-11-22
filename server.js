@@ -14,7 +14,7 @@ app.use('/api/subs', require('./routes/subs'))
 
 const PORT = process.env.PORT || 5000
 
-db.sequelize.sync()
+// db.sequelize.sync()
 
 
 // We may need this during development
