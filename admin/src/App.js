@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Redirect } from "react-router-dom";
 import Login from './components/Admin/Login'
 import AdminPage from './components/Admin/AdminPage'
@@ -7,12 +7,17 @@ import AdminPage from './components/Admin/AdminPage'
 import './App.css'
 
 function App() {
-  const [token, setToken] = useState(null)
   const [redirect, setRedirect] = useState(null)
   useEffect(() => {
     const run = async () => {
-      const response = await fetch('http://localhost:5000/api/admin')
+      const token = localStorage.getItem('token')
+      const response = await fetch('http://localhost:5000/api/admin', {
+        headers: {
+          'Authentication': token
+        }
+      })
       const data = await response.json()
+      console.log(data);
       if (data.msg) {
         setRedirect('/login')
       }
@@ -30,7 +35,7 @@ function App() {
     <Router>
       {redirectFunc()}
       <Route path="/" exact component={AdminPage} />
-      <Route path="/login" exact render={(props) => <Login {...props} setToken={setToken} />} />
+      <Route path="/login" exact render={(props) => <Login {...props} />} />
       <Route path="/admin" component={AdminPage} />
     </Router>
   );
