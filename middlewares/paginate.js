@@ -1,4 +1,7 @@
 module.exports = model => async (req, res, next) => {
+  if (!req.query.page || !req.query.limit) {
+    return res.status(400).send({ Error: 'Page and Limit should be given' })
+  }
   const page = parseInt(req.query.page)
   const limit = parseInt(req.query.limit)
 
