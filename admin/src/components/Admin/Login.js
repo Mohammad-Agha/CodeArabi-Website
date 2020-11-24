@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from "react-router-dom";
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [redirect, setRedirect] = useState(null)
   const [username, setUsername] = useState('CodeArabi')
   const [password, setPassword] = useState('12345678')
@@ -39,7 +39,6 @@ const Login = ({ setToken }) => {
         }, 2000)
       }
       else {
-        setToken(data.token)
         localStorage.setItem('token', data.token)
         setRedirect('/admin')
       }
