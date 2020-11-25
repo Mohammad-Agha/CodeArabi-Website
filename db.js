@@ -88,6 +88,24 @@ const initializeDB = async () => {
     }
   }
 
+  const addImage = async filename => {
+    const query = `INSERT INTO image (path) VALUES(?)`
+    try {
+      return await db.run(query, [filename])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const deleteImageByPath = async path => {
+    const query = `DELETE FROM image WHERE path=?`
+    try {
+      return await db.run(query, [path])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const Admin = {
     getAdminByUsername,
     getAdminById
@@ -103,7 +121,12 @@ const initializeDB = async () => {
     deleteBlog
   }
 
-  return { Admin, Blog }
+  const Image = {
+    addImage,
+    deleteImageByPath
+  }
+
+  return { Admin, Blog, Image }
 
 }
 
