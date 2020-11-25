@@ -18,9 +18,9 @@ const BlogRow = ({ data, deleteBlogs }) => {
 
     <tr>
       <td>{data.id}</td>
-      <td>{data.tag}</td>
-      <td>{data.title}</td>
-      <td>{data.description}</td>
+      <td>{data.tag.length > 20 ? `${data.tag.substring(0, 20)}...` : data.tag}</td>
+      <td>{data.title.length > 20 ? `${data.title.substring(0, 20)}...` : data.title}</td>
+      <td>{data.description.length > 20 ? `${data.description.substring(0, 20)}...` : data.description}</td>
       <td>{data.featured === 1 ? '✔' : '✗'}</td>
       <td>{data.created_at}</td>
       <td>{!data.updated_at ? 'never' : data.updated_at}</td>

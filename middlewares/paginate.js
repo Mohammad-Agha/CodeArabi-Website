@@ -1,4 +1,4 @@
-module.exports = model => async (req, res, next) => {
+module.exports = (model, count, getPaginate) => async (req, res, next) => {
   const page = parseInt(req.query.page)
   const limit = parseInt(req.query.limit)
   const startIndex = (page - 1) * limit
@@ -6,7 +6,7 @@ module.exports = model => async (req, res, next) => {
 
   const results = {}
 
-  const totalBlogs = await model.countBlogs()
+  const totalBlogs = await count()
   results.total = totalBlogs.total
 
   if (endIndex < totalBlogs.total) {
@@ -23,7 +23,7 @@ module.exports = model => async (req, res, next) => {
     }
   }
 
-  results.results = await model.getPaginatedBlogs(startIndex, limit)
+  results.results = await getPaginate(startIndex, limit)
   res.paginatedResults = results
   next()
 }

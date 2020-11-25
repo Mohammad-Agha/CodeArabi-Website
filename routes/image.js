@@ -3,7 +3,7 @@ const auth = require('../middlewares/auth')
 const upload = require('../middlewares/multer')
 const paginate = require('../middlewares/paginate')
 const initializeDB = require('../db')
-
+const fs = require('fs')
 
 const run = async () => {
   const { Image } = await initializeDB()
@@ -20,7 +20,7 @@ const run = async () => {
         return res.send({ msg: 'No image was given' })
       }
       try {
-        const image = await Image.addImage(req.body.filename)
+        const image = await Image.addImage(req.file.filename)
         res.json({ success: true, data: image })
       } catch (error) {
         console.error(error);
@@ -32,7 +32,7 @@ const run = async () => {
   // @route    GET api/image
   // @desc     Get all images
   // @access   Private
-  router.get('/', [auth, paginate(Image)], (req, res) => {
+  router.get('/', [auth, paginate(Image, Image.countImages, Image.getPaginatedImages)], (req, res) => {
     res.json(res.paginatedResults)
   })
 
@@ -42,7 +42,7 @@ const run = async () => {
   router.delete('/:path', auth, async (req, res) => {
     try {
       const image = await Image.deleteImageByPath(req.params.path)
-      fs.unlink(`../public/images/${req.params.path}`, () => {
+      fs.unlink(`./public/images/${req.params.path}`, () => {
         return res.json({ success: true, data: image })
       });
     }

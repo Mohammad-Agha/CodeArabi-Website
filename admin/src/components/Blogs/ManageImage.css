@@ -1,0 +1,13 @@
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.image-gallery > img{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  align-items: center;
+  margin-right: 30px;
+}

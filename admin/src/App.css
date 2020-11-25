@@ -20,8 +20,11 @@ html, body {
 
 .component-div {
   margin: 10px 0;
+  padding: 10px;
   height: 50px;
   display: flex;
+  border-radius: 4px;
+  justify-content: space-between;
   align-items: center;
   background-color: #e74c3c;
 }

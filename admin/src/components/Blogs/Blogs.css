@@ -2,6 +2,8 @@
   display: inline-block;
   text-decoration: none;
   padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
   background-color: #2fb623;
   margin-bottom: 10px;
   color: #fff

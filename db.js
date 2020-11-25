@@ -106,6 +106,24 @@ const initializeDB = async () => {
     }
   }
 
+  const countImages = async () => {
+    const query = `SELECT COUNT(id) AS total FROM image`
+    try {
+      return await db.get(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getPaginatedImages = async (offset, limit) => {
+    const query = `SELECT * FROM image LIMIT ${offset}, ${limit}`
+    try {
+      return await db.all(query)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const Admin = {
     getAdminByUsername,
     getAdminById
@@ -123,7 +141,9 @@ const initializeDB = async () => {
 
   const Image = {
     addImage,
-    deleteImageByPath
+    countImages,
+    deleteImageByPath,
+    getPaginatedImages
   }
 
   return { Admin, Blog, Image }
