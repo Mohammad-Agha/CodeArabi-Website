@@ -2,13 +2,21 @@
     --primary: #fff;
 }
 
-.btn {
-    padding: 8px 20px;
-    border-radius: 2px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
+.subscribe{
+    display: block;
+    text-align: center;
+    margin: 1rem auto;
+    border-radius: 4px;
+    width: 95%;
+    height: 1%;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    
+    transition: all 0.3s ease-out;
+  }
 
 .btn--primary {
     background-color: var(--primary);

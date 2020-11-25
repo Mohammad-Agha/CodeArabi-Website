@@ -10,10 +10,22 @@
     font-size: 60px;
   }
 
-  .card-btns{
+  .btnblog {
+    display: block;
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 1rem auto;
+    border-radius: 4px;
+    width: 20%;
+    height: 1%;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    
+    transition: all 0.3s ease-out;
   }
+
   
   .cards__container {
     
@@ -117,6 +129,22 @@
     line-height: 24px;
   }
   
+  .card-footer{
+    text-align: center;
+    margin-bottom: 1rem;
+    
+  }
+  .btn-cards{
+    
+    color:white;
+    padding: 8px 20px;
+    cursor: pointer;
+
+
+  }
+
+ 
+
   @media only screen and (min-width: 1200px) {
     .content__blog__container {
       width: 84%;

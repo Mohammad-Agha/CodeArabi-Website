@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
 function CardItem(props) {
   return (
     <>
@@ -17,13 +19,16 @@ function CardItem(props) {
           </figure>
           <div className='cards__item__info'>
             <h5 className='cards__item__text'>{props.text}</h5>
-            <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+          </div>
+          <div className="card-footer">
+            <a href="#" className="btn-cards">Read More</a>
           </div>
           
         </Link>
       </li>
       
     </>
+    
   );
 }
 

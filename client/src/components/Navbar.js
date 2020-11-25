@@ -57,11 +57,6 @@ function Navbar() {
                      Contact Us  
                    </Link>
                    </li>
-                   <li className='nav-item'>
-                   <Link to="/subscribe" className='nav-links-mobile' onClick={closeMobileMenu}>
-                     Subscribe  
-                   </Link>
-                   </li>
                    
                </ul> 
                
