@@ -8,11 +8,13 @@ import './Dashboard.css'
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
-      <TotalBlogs />
-      <TotalImages />
-      <TotalSubs />
-      <TotalFeedbacks />
+    <div className="div-wrapper">
+      <div className="dashboard">
+        <TotalBlogs />
+        <TotalImages />
+        <TotalSubs />
+        <TotalFeedbacks />
+      </div>
     </div>
   )
 }

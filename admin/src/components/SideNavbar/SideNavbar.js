@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 import './SideNavbar.css'
 
 const SideNavbar = () => {
+
+  const logout = () => {
+    localStorage.removeItem('token')
+  }
   return (
     <nav className="nav">
       <img className="logo" src="" alt="main-logo" />
@@ -25,7 +29,7 @@ const SideNavbar = () => {
           <li>Feedback</li>
         </Link>
 
-        <Link className="nav-link" to='/admin/logout'>
+        <Link className="nav-link" onClick={logout} to='/login'>
           <li>Logout</li>
         </Link>
       </ul>

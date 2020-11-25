@@ -1,9 +1,12 @@
 .nav {
   height: 100vh;
+  position: fixed;
   display: flex;
-  width: 20vh;
+  width: 15%;
   flex-direction: column;
-  background-color: aquamarine;
+  background-color: #c0392b;
+  border-right: 1px solid#e74c3c;
+  float: left;
 }
 
 .logo {
@@ -13,6 +16,7 @@
 .nav__line {
   margin: 0 1rem;
   text-align: center;
+  color: #fff;
 }
 
 .nav-links {
@@ -20,18 +24,28 @@
 }
 
 .nav-link {
-  color: black;
   text-decoration: none;
   text-align: center;
+  border: none;
+  outline: none;
 }
 
 .nav-link li {
+  color: #fff;
   padding: 1rem;
-  margin: 1rem
+  margin: 1rem 0;
 }
 
 .nav-link li:hover {
-  background-color: red;
+  color: #f4f4f4;
+  background-color: #e74c3c;
+  border-color: #adadad;
+} 
+
+.active {
+  color: #f4f4f4;
+  background-color: #e74c3c;
+  border-color: #adadad;
 } 
 
 .nav-link:visited {
