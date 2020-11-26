@@ -11,30 +11,7 @@ function Cards() {
       
       <div className='cards__container'>
         <div className='cards__wrapper'>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/first-image.jpg'
-              text='لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور
-
-              أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد
-
-              أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات . '
-              label='Back-end'
-              path='/blogs/1'
-            />
-            <CardItem
-              src='images/first-image.jpg'
-              text='لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور
-
-              أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد
-              
-              أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات . '
-              label='Front-end'
-              path='/blogs/2'
-              title=''
-              
-            />
-          </ul>
+          
           <ul className='cards__items'>
             <CardItem
               src='images/first-image.jpg'

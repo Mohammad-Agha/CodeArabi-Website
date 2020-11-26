@@ -6,6 +6,7 @@ import './Button.css';
 function Footer() {
   return (
     <div className='footer-container'>
+      
       <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
           Join the Codings newsletter to receive our best coding snippets
@@ -14,7 +15,8 @@ function Footer() {
           You can unsubscribe at any time.
         </p>
         <div className='input-areas'>
-          <form>
+          
+          <form> 
             <input
               className='footer-input'
               name='email'
@@ -25,8 +27,7 @@ function Footer() {
                      Subscribe  
             </Link>
           </form>
-          
-        </div>
+          </div>
       </section>
       <section class='social-media'>
         <div class='social-media-wrap'>
@@ -84,5 +85,6 @@ function Footer() {
     </div>
   );
 }
+
 
 export default Footer;
