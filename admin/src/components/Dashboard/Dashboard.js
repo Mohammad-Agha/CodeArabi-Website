@@ -9,6 +9,9 @@ import './Dashboard.css'
 const Dashboard = () => {
   return (
     <div className="div-wrapper">
+      <div className="component-div">
+        <span className="component-name">Dashboard</span>
+      </div>
       <div className="dashboard">
         <TotalBlogs />
         <TotalImages />

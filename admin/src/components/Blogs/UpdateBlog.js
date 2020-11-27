@@ -12,6 +12,7 @@ import './AddBlog.css'
 const UpdateBlog = () => {
   const { id } = useParams()
   const blogId = useState(id)[0]
+  const [alert, setAlert] = useState(false)
   const [viewImages, setViewImages] = useState(false)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [tag, setTag] = useState('')
@@ -29,7 +30,7 @@ const UpdateBlog = () => {
       const data = await response.json()
       setTag(data.tag)
       setTitle(data.title)
-      setDescription(data.title)
+      setDescription(data.description)
       const blocksFromHtml = htmlToDraft(data.content);
       if (data.featured === 1) {
         setFeatured(true)
@@ -97,6 +98,10 @@ const UpdateBlog = () => {
         },
         body: JSON.stringify(body)
       })
+      setAlert(true)
+      setTimeout(() => {
+        setAlert(false)
+      }, 2000)
     } catch (error) {
       console.log(error);
     }
@@ -151,6 +156,7 @@ const UpdateBlog = () => {
         <span className="component-name">Update Blog</span>
         <button className="link-btn big-btn" onClick={submitBlogForm}>Update blog</button>
       </div>
+      {alert && <div className="show-alert-green">Blog Updated</div>}
       <form className="add-blog-form">
         <div className="form-group">
           <label>Tag {tagError && <span className="form-error">{tagError}</span>}</label>

@@ -63,6 +63,21 @@
   animation: animate-alert 1s normal forwards ease-in-out;
 }
 
+.show-alert-green {
+  position: absolute;
+  display: inline-block;
+  background-color: #2fb623;
+  color: #fff !important;
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 20px;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  text-align: center;
+  animation: animate-alert 1s normal forwards ease-in-out;
+}
+
 @keyframes animate-alert {
   from {
     opacity: 0;

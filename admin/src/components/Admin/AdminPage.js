@@ -7,6 +7,7 @@ import Feedbacks from '../Feedbacks/Feedbacks'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import AddBlog from '../Blogs/AddBlog'
 import UpdateBlog from '../Blogs/UpdateBlog'
+import ViewFeedback from '../Feedbacks/FeedbackView'
 
 const AdminPage = () => {
   const [redirect, setRedirect] = useState(null)
@@ -31,6 +32,7 @@ const AdminPage = () => {
         <Route path="/admin/blogs/:id" exact children={<UpdateBlog />} />
         <Route path="/admin/subs" exact component={Subs} />
         <Route path="/admin/feedbacks" exact component={Feedbacks} />
+        <Route path="/admin/feedbacks/:id" exact children={<ViewFeedback />} />
       </Switch>
     </>
   )

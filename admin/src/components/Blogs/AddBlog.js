@@ -10,7 +10,7 @@ import './AddBlog.css'
 const AddBlog = () => {
 
   const [viewImages, setViewImages] = useState(false)
-
+  const [alert, setAlert] = useState(false)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [tag, setTag] = useState('')
   const [title, setTitle] = useState('')
@@ -74,6 +74,10 @@ const AddBlog = () => {
         },
         body: JSON.stringify(body)
       })
+      setAlert(true)
+      setTimeout(() => {
+        setAlert(false)
+      }, 2000)
       setTag('')
       setDescription('')
       setTitle('')
@@ -133,6 +137,7 @@ const AddBlog = () => {
         <span className="component-name">Add Blog</span>
         <button className="link-btn big-btn" onClick={submitBlogForm}>Add blog</button>
       </div>
+      {alert && <div className="show-alert-green">Blog Added</div>}
       <form className="add-blog-form">
         <div className="form-group">
           <label>Tag {tagError && <span className="form-error">{tagError}</span>}</label>

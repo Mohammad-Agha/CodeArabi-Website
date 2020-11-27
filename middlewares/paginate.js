@@ -4,6 +4,10 @@ module.exports = (model, count, getPaginate) => async (req, res, next) => {
   const startIndex = (page - 1) * limit
   const endIndex = page * limit
 
+  if (!page || !limit) {
+    return res.send({ error: 'Page and limit are required' })
+  }
+
   const results = {}
 
   const totalBlogs = await count()

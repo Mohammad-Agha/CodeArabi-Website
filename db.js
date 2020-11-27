@@ -88,6 +88,16 @@ const initializeDB = async () => {
     }
   }
 
+  const getFeaturedBlogs = async () => {
+    const query = `SELECT * FROM blog WHERE featured=1 LIMIT 5`
+    try {
+      console.log(query);
+      return await db.all(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const addImage = async filename => {
     const query = `INSERT INTO image (path) VALUES(?)`
     try {
@@ -124,6 +134,89 @@ const initializeDB = async () => {
     }
   }
 
+  const getPaginatedSubs = async (offset, limit) => {
+    const query = `SELECT * FROM subscribe LIMIT ${offset}, ${limit}`
+    try {
+      return await db.all(query)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const countSubs = async () => {
+    const query = `SELECT COUNT(id) AS total FROM subscribe`
+    try {
+      return await db.get(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const addSub = async sub => {
+    const query = `INSERT INTO subscribe (email) VALUES(?)`
+    try {
+      return await db.run(query, [sub.email])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getSubByEmail = async email => {
+    try {
+      const query = `SELECT id, email FROM subscribe WHERE email=?`
+      return await db.get(query, [email])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getAllSubs = async () => {
+    try {
+      const query = `SELECT email FROM subscribe`
+      return await db.all(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const addContact = async contact => {
+    const query = `INSERT INTO contact (name, title, email, body) VALUES(?, ?, ?, ?)`
+    try {
+      return await db.run(query, [contact.name, contact.title, contact.email, contact.body])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const countContacts = async () => {
+    const query = `SELECT COUNT(id) AS total FROM contact`
+    try {
+      return await db.get(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getPaginatedContacts = async (offset, limit) => {
+    const query = `SELECT * FROM contact LIMIT ${offset}, ${limit}`
+    try {
+      return await db.all(query)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const getContactById = async id => {
+    try {
+      const query = `SELECT * FROM contact WHERE id=?`
+      return await db.get(query, [id])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+
   const Admin = {
     getAdminByUsername,
     getAdminById
@@ -136,7 +229,8 @@ const initializeDB = async () => {
     getBlogById,
     getBlogsByTag,
     updateBlog,
-    deleteBlog
+    deleteBlog,
+    getFeaturedBlogs
   }
 
   const Image = {
@@ -146,7 +240,22 @@ const initializeDB = async () => {
     getPaginatedImages
   }
 
-  return { Admin, Blog, Image }
+  const Sub = {
+    getPaginatedSubs,
+    countSubs,
+    addSub,
+    getSubByEmail,
+    getAllSubs
+  }
+
+  const Contact = {
+    addContact,
+    countContacts,
+    getPaginatedContacts,
+    getContactById
+  }
+
+  return { Admin, Blog, Image, Sub, Contact }
 
 }
 
