@@ -119,9 +119,7 @@ const run = async () => {
   // @access   Public
   router.get('/featured/top', async (req, res) => {
     try {
-      console.log("here");
       const blogs = await Blog.getFeaturedBlogs()
-      console.log(blogs);
       res.json({ success: true, data: blogs })
     } catch (error) {
       console.error(error)
@@ -129,6 +127,18 @@ const run = async () => {
     }
   })
 
+  // @route    GET api/blog/featured
+  // @desc     Get the 5 featured blogs
+  // @access   Public
+  router.get('/featured/count', async (req, res) => {
+    try {
+      const blogs = await Blog.getFeaturedBlogsNumber()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
 }
 
 run()

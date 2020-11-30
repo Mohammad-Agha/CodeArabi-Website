@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { EditorState, convertToRaw } from 'draft-js';
 import ManageImages from './ManageImages'
 import { Editor } from 'react-draft-wysiwyg';
@@ -20,14 +20,26 @@ const AddBlog = () => {
   const [tagError, setTagError] = useState(null)
   const [descriptionError, setDescriptionError] = useState(null)
   const [titleError, setTitlteError] = useState(null)
+  const [featuredError, setFeaturedError] = useState(null)
 
+  useEffect(() => {
+    const run = async () => {
+      const response = await fetch(`http://localhost:5000/api/blog/featured/count`)
+      const data = await response.json()
+      if (data.data.total >= 6) {
+        document.getElementById("featured").disabled = true
+        setFeaturedError('You already have 6 featured blogs')
+      }
+    }
 
+    run()
+  }, [])
 
   const onEditorStateChange = editorState => {
     setEditorState(editorState)
   }
 
-  const handleChange = e => {
+  const handleChange = async e => {
     e.target.name === 'tag' && setTag(e.target.value)
     e.target.name === 'title' && setTitle(e.target.value)
     e.target.name === 'description' && setDescription(e.target.value)
@@ -57,6 +69,15 @@ const AddBlog = () => {
       }, 2000)
     }
     if (!tag || !title || !description) return
+    const response2 = await fetch(`http://localhost:5000/api/blog/featured/count`)
+    const data2 = await response2.json()
+    if (data2.data.total >= 6) {
+      setFeaturedError('You already have 6 featured blogs')
+      setTimeout(() => {
+        setFeaturedError(null)
+      }, 2000)
+      return
+    }
     let tagsArray = []
     const tags = tag.split(',')
     const trimmedTags = tags.map(tag => tag.trim())
@@ -160,8 +181,9 @@ const AddBlog = () => {
         </div>
         <div className="form-group">
           <label className="same-line">
-            <input onChange={handleChange} checked={featured} type="checkbox" name="featured" />
+            <input id="featured" onChange={handleChange} checked={featured} type="checkbox" name="featured" />
             <span>Featured</span>
+            {featuredError && <span className="form-error">{featuredError}</span>}
           </label>
         </div>
         <div className="form-group">

@@ -23,6 +23,7 @@ const UpdateBlog = () => {
   const [tagError, setTagError] = useState(null)
   const [descriptionError, setDescriptionError] = useState(null)
   const [titleError, setTitlteError] = useState(null)
+  const [featuredError, setFeaturedError] = useState(null)
 
   useEffect(() => {
     const run = async () => {
@@ -31,13 +32,19 @@ const UpdateBlog = () => {
       setTag(data.tag)
       setTitle(data.title)
       setDescription(data.description)
-      const blocksFromHtml = htmlToDraft(data.content);
       if (data.featured === 1) {
         setFeatured(true)
       }
       else {
+        const response2 = await fetch(`http://localhost:5000/api/blog/featured/count`)
+        const data2 = await response2.json()
+        if (data2.data.total >= 6) {
+          document.getElementById("featured").disabled = true
+          setFeaturedError('You already have 6 featured blogs')
+        }
         setFeatured(false)
       }
+      const blocksFromHtml = htmlToDraft(data.content);
       const { contentBlocks, entityMap } = blocksFromHtml;
       const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
       const editorState = EditorState.createWithContent(contentState);
@@ -51,7 +58,7 @@ const UpdateBlog = () => {
     setEditorState(editorState)
   }
 
-  const handleChange = e => {
+  const handleChange = async e => {
     e.target.name === 'tag' && setTag(e.target.value)
     e.target.name === 'title' && setTitle(e.target.value)
     e.target.name === 'description' && setDescription(e.target.value)
@@ -81,8 +88,15 @@ const UpdateBlog = () => {
       }, 2000)
     }
     if (!tag || !title || !description) return
+    let tagsArray = []
+    const tags = tag.split(',')
+    const trimmedTags = tags.map(tag => tag.trim())
+    trimmedTags.map(tag => tag.length > 0 && tagsArray.push(tag))
+    let tagString = ""
+    tagsArray.map(tag => tagString += `${tag}, `)
+    tagString = tagString.substring(0, tagString.length - 2)
     const body = {
-      tag,
+      tag: tagString,
       title,
       description,
       content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
@@ -98,6 +112,7 @@ const UpdateBlog = () => {
         },
         body: JSON.stringify(body)
       })
+      const data = await response.json()
       setAlert(true)
       setTimeout(() => {
         setAlert(false)
@@ -172,8 +187,9 @@ const UpdateBlog = () => {
         </div>
         <div className="form-group">
           <label className="same-line">
-            <input onChange={handleChange} checked={featured} type="checkbox" name="featured" />
+            <input id="featured" onChange={handleChange} checked={featured} type="checkbox" name="featured" />
             <span>Featured</span>
+            {featuredError && <span className="form-error">{featuredError}</span>}
           </label>
         </div>
         <div className="form-group">

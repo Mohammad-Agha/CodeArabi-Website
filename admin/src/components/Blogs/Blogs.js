@@ -12,6 +12,7 @@ const Blogs = () => {
   const [pageCount, setPageCount] = useState(1)
   const [alert, setAlert] = useState(false)
   const [search, setSearch] = useState('')
+  const [featuredCount, setFeaturedCount] = useState(null)
 
   useEffect(() => {
     let isMounted = true;
@@ -19,7 +20,10 @@ const Blogs = () => {
       const perPage = 7
       const response = await fetch(`http://localhost:5000/api/blog?page=${offset + 1}&limit=${perPage}`)
       const data = await response.json()
+      const response2 = await fetch(`http://localhost:5000/api/blog/featured/count`)
+      const data2 = await response2.json()
       if (isMounted) {
+        setFeaturedCount(data2.data.total)
         setBlogs(data.results)
         setPageCount(Math.ceil(data.total / perPage))
       }
@@ -122,7 +126,7 @@ const Blogs = () => {
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Featured <select onChange={changeOrder} name="featured">
+            <th>Featured ({featuredCount}/6) <select onChange={changeOrder} name="featured">
               <option selected value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>

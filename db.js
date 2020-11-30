@@ -106,6 +106,16 @@ const initializeDB = async () => {
     }
   }
 
+  const getFeaturedBlogsNumber = async () => {
+    const query = `SELECT COUNT(id) AS total FROM blog WHERE featured=1`
+    try {
+      console.log(query);
+      return await db.get(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
   const addImage = async filename => {
     const query = `INSERT INTO image (path) VALUES(?)`
@@ -240,6 +250,7 @@ const initializeDB = async () => {
     updateBlog,
     deleteBlog,
     getFeaturedBlogs,
+    getFeaturedBlogsNumber
   }
 
   const Image = {
