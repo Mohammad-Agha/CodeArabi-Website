@@ -43,8 +43,16 @@ const initializeDB = async () => {
     }
   }
 
-  const getPaginatedBlogs = async (offset, limit) => {
-    const query = `SELECT * FROM blog LIMIT ${offset}, ${limit}`
+  const getPaginatedBlogs = async (offset, limit, column, order) => {
+    let query
+    if (column && order) {
+      query = `SELECT * FROM (SELECT * FROM blog LIMIT ${offset}, ${limit}) 
+      ORDER BY ${column} ${order}`
+    }
+    else {
+      query = `SELECT * FROM blog LIMIT ${offset}, ${limit}`
+    }
+    console.log(query);
     try {
       return await db.all(query)
     } catch (error) {
@@ -97,6 +105,7 @@ const initializeDB = async () => {
       console.error(error)
     }
   }
+
 
   const addImage = async filename => {
     const query = `INSERT INTO image (path) VALUES(?)`
@@ -230,7 +239,7 @@ const initializeDB = async () => {
     getBlogsByTag,
     updateBlog,
     deleteBlog,
-    getFeaturedBlogs
+    getFeaturedBlogs,
   }
 
   const Image = {

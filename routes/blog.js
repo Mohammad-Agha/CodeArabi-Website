@@ -22,7 +22,6 @@ const run = async () => {
       ]
     ],
     async (req, res) => {
-      console.log(req);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -41,6 +40,7 @@ const run = async () => {
   // @desc     Get all blogs
   // @access   public
   router.get('/', paginate(Blog, Blog.countBlogs, Blog.getPaginatedBlogs), (req, res) => {
+    console.log(res.paginatedResults);
     res.json(res.paginatedResults)
   })
 

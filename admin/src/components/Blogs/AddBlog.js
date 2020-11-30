@@ -57,8 +57,15 @@ const AddBlog = () => {
       }, 2000)
     }
     if (!tag || !title || !description) return
+    let tagsArray = []
+    const tags = tag.split(',')
+    const trimmedTags = tags.map(tag => tag.trim())
+    trimmedTags.map(tag => tag.length > 0 && tagsArray.push(tag))
+    let tagString = ""
+    tagsArray.map(tag => tagString += `${tag}, `)
+    tagString = tagString.substring(0, tagString.length - 2)
     const body = {
-      tag,
+      tag: tagString,
       title,
       description,
       content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
@@ -140,16 +147,16 @@ const AddBlog = () => {
       {alert && <div className="show-alert-green">Blog Added</div>}
       <form className="add-blog-form">
         <div className="form-group">
-          <label>Tag {tagError && <span className="form-error">{tagError}</span>}</label>
-          <input value={tag} onChange={handleChange} type="text" name="tag" />
+          <label>Tag (Use commas for multiple tags){tagError && <span className="form-error">{tagError}</span>}</label>
+          <input value={tag} onChange={handleChange} type="text" name="tag" placeholder="e.g Python, DS, Complexity, Big-O" />
         </div>
         <div className="form-group">
           <label>Title {titleError && <span className="form-error">{titleError}</span>}</label>
-          <input value={title} onChange={handleChange} type="text" name="title" />
+          <input value={title} onChange={handleChange} type="text" name="title" placeholder="e.g Sorting Arrays in Python with Complexity Analysis" />
         </div>
         <div className="form-group">
           <label>Description {descriptionError && <span className="form-error">{descriptionError}</span>}</label>
-          <input value={description} onChange={handleChange} type="text" name="description" />
+          <input value={description} onChange={handleChange} type="text" name="description" placeholder="e.g Learn how to sort arrays in different ways with Python" />
         </div>
         <div className="form-group">
           <label className="same-line">
