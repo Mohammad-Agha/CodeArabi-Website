@@ -2,9 +2,9 @@ import React from 'react'
 
 function Blogs() {
     return (
-        <>
-        hello world
-        </>
+        <div>
+            hello world
+        </div>
     )
 }
 

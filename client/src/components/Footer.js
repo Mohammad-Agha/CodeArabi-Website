@@ -1,7 +1,9 @@
 import React from 'react';
 import './Footer.css';
+import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import './Button.css';
+
+
 
 function Footer() {
   return (
@@ -9,35 +11,42 @@ function Footer() {
       
       <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
-          Join the Codings newsletter to receive our best coding snippets
+        انضم إلى النشرة الإخبارية لتلقي أفضل مقتطفات الترميز
         </p>
         <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
+        يمكنك إلغاء الاشتراك في أي وقت
         </p>
         <div className='input-areas'>
           
           <form> 
-            <input
+          <input
               className='footer-input'
               name='email'
               type='email'
-              placeholder='Your Email'
+              placeholder='بريدك الالكتروني'
             />
-            <Link to="/subscribe" className='subscribe'>
-                     Subscribe  
-            </Link>
+            <br/>
+            <Button
+          className='btns'
+          buttonStyle='btn--outline'
+          buttonSize='btn--large'
+        >
+          اشترك الان
+        </Button>
+            
           </form>
           </div>
       </section>
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
+          <img src="/images/second.jpg" alt='coding' ></img>
             <Link to='/' className='social-logo'>
-              CodeArabic
+              كود عربي
               <i class='fas fa-code' />
             </Link>
           </div>
-          <small class='website-rights'>CodeArabic © 2020</small>
+          <small class='website-rights' > ٢.٢. © كود عربي</small>
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'

@@ -113,7 +113,22 @@ const run = async () => {
     }
   })
 
+router.get('/featured/top', async (req, res) => {
+  try{
+       const blogs = await Blog.getFeaturedBlogs ()
+       res.json({success: true, data: blogs})
+  }
+  catch (error) {
+    console.log(error)
+    res.status(500).send('Server error')
+  }
+})
+
+
+
+
 }
+
 
 run()
 

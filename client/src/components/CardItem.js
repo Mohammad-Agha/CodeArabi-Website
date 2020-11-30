@@ -16,9 +16,6 @@ function CardItem(props) {
           <div className='cards__item__info'>
             <h5 className='cards__item__text'>{props.text}</h5>
           </div>
-          <div className="card-footer">
-            <a href="#" className="btn-cards">Read More</a>
-          </div>
           
         </Link>
       </li>

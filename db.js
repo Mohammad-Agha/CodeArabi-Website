@@ -88,6 +88,15 @@ const initializeDB = async () => {
     }
   }
 
+  const getFeaturedBlogs = async () => {
+    const query = `SELECT * FROM blog WHERE featured = 1 LIMIT 6`
+    try {
+      return await db.all(query)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   const Admin = {
     getAdminByUsername,
     getAdminById
@@ -100,7 +109,8 @@ const initializeDB = async () => {
     getBlogById,
     getBlogsByTag,
     updateBlog,
-    deleteBlog
+    deleteBlog,
+    getFeaturedBlogs
   }
 
   return { Admin, Blog }

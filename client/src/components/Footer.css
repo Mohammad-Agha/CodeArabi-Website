@@ -1,33 +1,46 @@
 .footer-container {
-  background-color:#242222;
+  
   padding: 4rem 0 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+/*
 .subscribe{
     display: block;
     text-align: center;
-    margin: 1rem auto;
-    border-radius: 4px;
-    width: 95%;
-    height: 1%;
+    
     text-decoration: none;
-    font-size: 1rem;
+    width: 15rem;
+    height: 3rem;
+    font-size: 18px;
+    
     background-color: white;
+    font-weight: bold;
     color: black;
     padding: 14px 20px;
-    
-    transition: all 0.3s ease-out;
+    margin: 1rem auto;
+    border-radius: 10px;
+   transition: all 0.3s ease-out;
   }
 
+  .subscribe:hover {
+    font-size: 1rem;
+    font-weight: bold;
+    color: lightgreen;
+    box-shadow: rgb(3, 3, 3) 0 0px 0px 40px inset;
+    }
+*/
+  
 
 .footer-subscription {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   text-align: center;
 
   margin-bottom: 24px;
@@ -47,19 +60,23 @@
 
 .footer-subscription-text {
   margin-bottom: 24px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .footer-input {
-  padding: 8px 20px;
+  padding: 8px 0px;
   border-radius: 2px;
-  margin-right: 10px;
   outline: none;
   border: none;
+  width: 15rem;
+  height: 3rem;
   font-size: 18px;
-  margin-bottom: 16px;
   border: 1px solid #fff;
+  text-align: center;
+  border-radius: 10px;
+  
 }
+
 
 .footer-links {
   width: 100%;
@@ -126,7 +143,7 @@
   align-items: center;
   width: 90%;
   max-width: 1000px;
-  margin: 40px auto 0 auto;
+  margin: 40px 10px 0 auto;
 }
 
 .social-icons {
@@ -146,6 +163,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+
 }
 
 .website-rights {
@@ -153,18 +171,22 @@
   margin-bottom: 16px;
 }
 
+.social-icon-link {
+  transition: transform .2s;
+}
+
+.social-icon-link:hover {
+  -ms-transform: scale(2.3); /* IE 9 */
+  -webkit-transform: scale(2.3); /* Safari 3-8 */
+  transform: scale(2.3); 
+}
+
 @media screen and (max-width: 820px) {
   .footer-links {
     padding-top: 2rem;
   }
 
-  .footer-input {
-    width: 100%;
-  }
-
-  .btn {
-    width: 100%;
-  }
+  
 
   .footer-link-wrapper {
     flex-direction: column;
@@ -172,8 +194,11 @@
 
   .social-media-wrap {
     flex-direction: column;
+    margin: 40px auto 0 auto;
   }
 }
 
 @media screen and (max-width: 768px) {
 }
+
+

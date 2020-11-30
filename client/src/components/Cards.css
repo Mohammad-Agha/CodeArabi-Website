@@ -1,33 +1,29 @@
 .cards {
     padding: 4rem;
     
+    
   }
  
   h1 {
-    
+  
     text-align: center;
     color: white;
     font-size: 60px;
   }
 
-  .btnblog {
-    display: block;
-    text-align: center;
-    margin: 1rem auto;
-    border-radius: 4px;
-    width: 20%;
-    height: 1%;
-    text-decoration: none;
-    font-size: 1rem;
-    background-color: white;
-    color: black;
-    padding: 14px 20px;
-    
-    transition: all 0.3s ease-out;
+  .cards__item {
+    transition: transform .2s;
+  
+  }
+  
+  .cards__item:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
   }
 
-  
-  .cards__container {
+ 
+.cards__container {
     
     display: flex;
     flex-flow: column;
@@ -35,6 +31,7 @@
     max-width: 1120px;
     width: 90%;
     margin: 0 auto;
+  
   }
   
   .cards__wrapper {
@@ -47,6 +44,7 @@
     
     margin-bottom: 50px;
     margin-right: 30px;
+    margin-top:30px;
   }
   
   .cards__item {
@@ -109,14 +107,10 @@
     height: 100%;
     max-height: 100%;
     object-fit: cover;
-    transition: all 0.5s linear;
     
   }
   
-  .cards__item__img:hover {
-
-  transform: scale(1.1);
-  }
+  
   
   .cards__item__info {
     padding: 20px 30px 30px;
@@ -125,8 +119,10 @@
   .cards__item__text {
     text-align:right;
     color: white;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 30px;
+    font-family: limonada, arial, sans-serif;
+    
   }
   
   .card-footer{
@@ -134,14 +130,7 @@
     margin-bottom: 1rem;
     
   }
-  .btn-cards{
-    
-    color:white;
-    padding: 8px 20px;
-    cursor: pointer;
-
-
-  }
+  
 
  
 
@@ -160,5 +149,15 @@
   @media only screen and (max-width: 1024px) {
     .cards__item {
       margin-bottom: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    h1 {
+      margin-top: 120px;
+      font-size:40px;
+    }
+    .more{
+      width: 10rem;
     }
   }
