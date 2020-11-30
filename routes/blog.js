@@ -139,6 +139,19 @@ const run = async () => {
       res.status(500).send('Server error')
     }
   })
+
+  // @route    GET api/blog/count/all
+  // @desc     Get blog count
+  // @access   Public
+  router.get('/count/all', async (req, res) => {
+    try {
+      const blogs = await Blog.countBlogs()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
 }
 
 run()

@@ -40,6 +40,7 @@ const Feedbacks = () => {
             <th>ID</th>
             <th>Name</th>
             <th>Title</th>
+            <th>Body</th>
             <th>Email</th>
             <th>Created</th>
             <th></th>

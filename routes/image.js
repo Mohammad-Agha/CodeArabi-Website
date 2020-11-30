@@ -51,6 +51,19 @@ const run = async () => {
       res.status(500).send('Server error')
     }
   })
+
+  // @route    GET api/image/count/all
+  // @desc     Get image count
+  // @access   Public
+  router.get('/count/all', async (req, res) => {
+    try {
+      const blogs = await Image.countImages()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
 }
 run()
 

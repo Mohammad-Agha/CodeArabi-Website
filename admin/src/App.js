@@ -20,6 +20,9 @@ function App() {
       if (data.msg) {
         setRedirect('/login')
       }
+      else {
+        setRedirect('/admin/blogs')
+      }
     }
     run()
   }, [])

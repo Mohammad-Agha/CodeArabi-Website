@@ -18,7 +18,7 @@ const AdminPage = () => {
     }
   }
   useEffect(() => {
-    setRedirect('/admin/dashboard')
+    // setRedirect('/admin/dashboard')
   }, [])
 
   return (

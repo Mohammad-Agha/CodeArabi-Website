@@ -8,19 +8,13 @@ const BlogRow = ({ data, deleteBlogs }) => {
     deleteBlogs(parseInt(e.target.id))
   }
 
-  const renderDate = date => {
-    const formattedDate = new Date(date)
-    const returnDate = `${formattedDate.getFullYear()}-${formattedDate.getMonth() + 1}-${formattedDate.getDate()}`
-    return returnDate
-  }
-
   return (
 
     <tr>
       <td>{data.id}</td>
-      <td>{data.tag.length > 14 ? `${data.tag.substring(0, 14)}...` : data.tag}</td>
-      <td>{data.title.length > 14 ? `${data.title.substring(0, 14)}...` : data.title}</td>
-      <td>{data.description.length > 14 ? `${data.description.substring(0, 14)}...` : data.description}</td>
+      <td>{data.tag.length > 10 ? `${data.tag.substring(0, 10)}...` : data.tag}</td>
+      <td>{data.title.length > 10 ? `${data.title.substring(0, 10)}...` : data.title}</td>
+      <td>{data.description.length > 10 ? `${data.description.substring(0, 10)}...` : data.description}</td>
       <td>{data.featured === 1 ? '✔' : '✗'}</td>
       <td>{data.created_at}</td>
       <td>{!data.updated_at ? 'never' : data.updated_at}</td>

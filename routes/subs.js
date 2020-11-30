@@ -60,6 +60,19 @@ const run = async () => {
       res.status(500).send('Server error')
     }
   })
+
+  // @route    GET api/subs/count/all
+  // @desc     Get subs count
+  // @access   Public
+  router.get('/count/all', async (req, res) => {
+    try {
+      const blogs = await Sub.countSubs()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
 }
 
 run()

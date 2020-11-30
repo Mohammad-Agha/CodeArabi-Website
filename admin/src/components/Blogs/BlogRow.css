@@ -5,6 +5,7 @@
   background-color: transparent;
   border-spacing: 0;
   border-collapse: collapse;
+  font-size: 14px;
 }
 
 .table > tbody > tr:nth-of-type(2n+1) {
@@ -32,9 +33,10 @@
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 14px;
   margin-left: 5px;
   border: none;
+  
 }
 
 .delete-btn:hover {
@@ -48,7 +50,7 @@
   background-color: #2fb623;
   border-radius: 4px;
   margin: 10px 0;
-  font-size: 1rem;
+  font-size: 14px;
   color: #fff
 }
 
