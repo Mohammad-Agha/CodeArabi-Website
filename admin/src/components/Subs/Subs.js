@@ -54,7 +54,7 @@ const Subs = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>email</th>
+            <th>Email</th>
             <th>Created</th>
           </tr>
         </thead>
