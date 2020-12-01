@@ -30,6 +30,10 @@ const SideNavbar = () => {
           <li>Feedback</li>
         </Link>
 
+        <Link className="nav-link" to='/admin/social_media'>
+          <li>Social Media</li>
+        </Link>
+
         <Link className="nav-link" onClick={logout} to='/login'>
           <li>Logout</li>
         </Link>
