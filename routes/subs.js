@@ -18,14 +18,13 @@ const run = async () => {
   // @desc     Add a subscriber
   // @access   Public
   router.post('/',
-    [check('email', 'Email is required').exists(),
-    check('email', 'Email is not valid').isEmail()]
+    [check('email', 'Email is required').exists()]
     , async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
+        console.log(errors.array())
         return res.status(400).json({ errors: errors.array() });
       }
-
       try {
         const sub = await Sub.addSub(req.body)
         res.json({ success: true, data: sub })
@@ -41,7 +40,12 @@ const run = async () => {
   router.get('/:email', async (req, res) => {
     try {
       let sub = await Sub.getSubByEmail(req.params.email)
-      res.send(sub)
+      if (sub) {
+        res.json({ success: true, data: sub })
+      }
+      else {
+        res.json({ success: true, msg: "Email doesn't exist" })
+      }
     } catch (error) {
       console.error(error)
       res.status(500).send('Server error')

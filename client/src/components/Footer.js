@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
 function Footer() {
-
+  const [facebook, setFacebook] = useState('')
+  const [insta, setInsta] = useState('')
+  const [yt, setYt] = useState('')
+  const [twitter, setTwitter] = useState('')
+  const [git, setGit] = useState('')
   const [email, setEmail] = useState('')
+
+  const [emailError, setEmailError] = useState(null)
+
+  useEffect(() => {
+    const run = async () => {
+      const response = await fetch(`http://localhost:5000/api/social`)
+      const data = await response.json()
+      setFacebook(data.data.facebook)
+      setInsta(data.data.instagram)
+      setYt(data.data.youtube)
+      setTwitter(data.data.twitter)
+      setGit(data.data.github)
+    }
+    run()
+  }, [])
 
   const handler = e => {
     setEmail(e.target.value)
@@ -12,7 +31,39 @@ function Footer() {
 
   const submitForm = async e => {
     e.preventDefault()
-    // const
+    let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+    if (!pattern.test(email)) {
+      setEmailError("عنوان البريد الإلكتروني غير صالح");
+      setTimeout(() => {
+        setEmailError(null)
+      }, 2000)
+      return
+    }
+    const response = await fetch(`http://localhost:5000/api/subs/${email}`)
+    const data = await response.json()
+    if (data.msg) {
+      const response = await fetch(`http://localhost:5000/api/subs`, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email
+        })
+      })
+      setEmailError('شكرا لك على الاشتراك')
+      setTimeout(() => {
+        setEmailError(null)
+      }, 2000)
+    }
+    else {
+      setEmailError('إنك بالفعل مشترك')
+      setTimeout(() => {
+        setEmailError(null)
+      }, 2000)
+    }
   }
 
   return (
@@ -39,6 +90,9 @@ function Footer() {
                 إشترك الآن
           </button>
             </div>
+            <div className="input-areas-control">
+              <p>{emailError && emailError}</p>
+            </div>
           </form>
         </div>
       </section>
@@ -51,46 +105,47 @@ function Footer() {
           </div>
           <small className='website-rights' >  كود عربي © ٢٠٢٠  </small>
           <div className='social-icons'>
-            <Link
+            {facebook.length > 0 ? <a
               className='social-icon-link facebook'
-              to='/'
+              href={facebook}
               target='_blank'
               aria-label='Facebook'
             >
               <i className='fab fa-facebook-f' />
-            </Link>
-            <Link
+            </a> : ''}
+
+            {insta.length > 0 ? <a
               className='social-icon-link instagram'
-              to='/'
+              href={insta}
               target='_blank'
               aria-label='Instagram'
             >
               <i className='fab fa-instagram' />
-            </Link>
-            <Link
-              className='social-icon-link youtube'
-              to='/'
+            </a> : ''}
+            {yt.length > 0 ? <a
+              className='social-icon-link Youtube'
+              href={yt}
               target='_blank'
               aria-label='Youtube'
             >
               <i className='fab fa-youtube' />
-            </Link>
-            <Link
+            </a> : ''}
+            {twitter.length > 0 ? <a
               className='social-icon-link twitter'
-              to='/'
+              href={twitter}
               target='_blank'
               aria-label='Twitter'
             >
               <i className='fab fa-twitter' />
-            </Link>
-            <Link
-              className='social-icon-link twitter'
-              to='/'
+            </a> : ''}
+            {git.length > 0 ? <a
+              className='social-icon-link github'
+              href={git}
               target='_blank'
-              aria-label='LinkedIn'
+              aria-label='GitHub'
             >
-              <i className='fab fa-linkedin' />
-            </Link>
+              <i className='fab fa-github' />
+            </a> : ''}
           </div>
         </div>
       </section>
