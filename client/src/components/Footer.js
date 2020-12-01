@@ -46,10 +46,10 @@ function Footer() {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              &lt;/<span style={{ color: "#90ee906c" }}>عربي</span>.كود&gt;
+              &lt;/<span style={{ color: "#90ee90c5" }}>عربي</span>.كود&gt;
             </Link>
           </div>
-          <small className='website-rights' > ٢٠٢٠ © كود عربي</small>
+          <small className='website-rights' >  كود عربي © ٢٠٢٠  </small>
           <div className='social-icons'>
             <Link
               className='social-icon-link facebook'

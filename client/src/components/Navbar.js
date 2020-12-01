@@ -31,7 +31,7 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <Link to="/" className='navbar-logo' onClick={closeMobileMenu} >
-                    &lt;/<span style={{ color: "#90ee906c" }}>عربي</span>.كود&gt;
+                    &lt;/<span style={{ color: "#90ee90c5" }}>عربي</span>.كود&gt;
                 </Link>
                 <div className="menu-icon" onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
