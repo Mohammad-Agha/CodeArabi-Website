@@ -235,6 +235,24 @@ const initializeDB = async () => {
   }
 
 
+  const getSocial = async () => {
+    try {
+      const query = `SELECT * FROM social_media`
+      return await db.get(query)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const updateSocial = async social => {
+    const query = `UPDATE social_media SET facebook=?, instagram=?, youtube=?, twitter=?, github=? WHERE id=?`
+    try {
+      return await db.run(query, [social.facebook, social.instagram, social.youtube, social.twitter, social.github, 1])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
   const Admin = {
     getAdminByUsername,
@@ -275,7 +293,12 @@ const initializeDB = async () => {
     getContactById
   }
 
-  return { Admin, Blog, Image, Sub, Contact }
+  const Social = {
+    getSocial,
+    updateSocial
+  }
+
+  return { Admin, Blog, Image, Sub, Contact, Social }
 
 }
 

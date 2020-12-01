@@ -8,6 +8,7 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 import AddBlog from '../Blogs/AddBlog'
 import UpdateBlog from '../Blogs/UpdateBlog'
 import ViewFeedback from '../Feedbacks/FeedbackView'
+import SocialMedia from '../SocialMedia/SocialMedia'
 
 const AdminPage = () => {
   const [redirect, setRedirect] = useState(null)
@@ -18,7 +19,7 @@ const AdminPage = () => {
     }
   }
   useEffect(() => {
-    // setRedirect('/admin/dashboard')
+    setRedirect('/admin/dashboard')
   }, [])
 
   return (
@@ -27,6 +28,7 @@ const AdminPage = () => {
       <SideNavbar />
       <Switch>
         <Route path="/admin/dashboard" exact component={Dashboard} />
+        <Route path="/admin/social_media" exact component={SocialMedia} />
         <Route path="/admin/blogs" exact component={Blogs} />
         <Route path="/admin/blogs/add" exact component={AddBlog} />
         <Route path="/admin/blogs/:id" exact children={<UpdateBlog />} />
