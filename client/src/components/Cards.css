@@ -1,0 +1,126 @@
+.cards {
+    padding: 2rem 0;
+    background-color: #2c2f33;
+    border-bottom: 20px solid #23272a;
+  }
+ 
+  .cards h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+  }
+
+  .cards__item {
+    transition: transform .2s;
+  }
+  
+  .cards__item:hover {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1); 
+  }
+
+ 
+.cards__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 20px;
+  }
+  
+  .cards__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .cards__item {
+    background-color: #23272a;
+    display: flex;
+    margin: 0 1rem;
+    border-radius: 10px;
+    width: 370px;
+    margin-bottom: 30px;
+  }
+
+  .cards__item__date {
+    color: #fff;
+  }
+  
+  .cards__item__link {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border-radius: 10px;
+    text-decoration: none;
+    opacity: 0.7;
+  }
+
+  .cards__item__link:hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.26);
+    opacity: 1;
+  }
+  
+  .cards__item__img {
+    height: 200px;
+    object-fit: fill;
+    margin: 0;
+  }
+
+  .cards__item__labels {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .cards__item__label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #2c2f33;
+    margin: 5px;
+  }
+  
+  .cards__item__info {
+    padding: 10px 30px;
+  }
+
+  .cards__item__title > p {
+    margin-top: 10px;
+    padding: 0 30px;
+    color: #fff;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .cards__item__text {
+    text-align:right;
+    color: white;
+    font-size: 14px;
+    line-height: 30px;
+    font-family: 'Almarai', sans-serif;
+  }
+  
+  .card-footer{
+    text-align: center;
+    margin-bottom: 1rem;
+    
+  }
+
+
+  @media screen and (max-width: 1200px) {
+    .cards__item__img {
+      height: 220px;
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    .cards__item__img {
+      height: 200px;
+    }
+    
+  }

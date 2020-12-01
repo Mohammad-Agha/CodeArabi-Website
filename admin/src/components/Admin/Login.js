@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Redirect } from "react-router-dom";
 
+import './Login.css'
+
 const Login = () => {
   const [redirect, setRedirect] = useState(null)
   const [username, setUsername] = useState('CodeArabi')
@@ -36,7 +38,7 @@ const Login = () => {
         setError('Invalid Credentials')
         setTimeout(() => {
           setError('')
-        }, 2000)
+        }, 3000)
       }
       else {
         localStorage.setItem('token', data.token)
@@ -50,12 +52,31 @@ const Login = () => {
   return (
     <div>
       {redirectFunc()}
-      <form onSubmit={onSubmit}>
-        <input type="text" onChange={handleChange} name="username" value={username} />
-        <input type="password" onChange={handleChange} name="password" value={password} />
-        <input type="submit" value="login" />
-        {error}
-      </form>
+      <div className="login-header">
+        <span className="login-brand">CodeArabi</span>
+      </div>
+      <div className="login-admin-area">
+        <h1 className="admin-area__heading">Admin Area <small>Account Login</small></h1>
+      </div>
+      <div className="form-area">
+        <form className="login-form" onSubmit={onSubmit}>
+          <div className="form-wrapper">
+            <div className="form-group">
+              <label>Username</label>
+              <input type="text" placeholder="Username" onChange={handleChange} name="username" value={username} />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input type="password" placeholder="Password" onChange={handleChange} name="password" value={password} />
+            </div>
+            <div className="form-group">
+              <button className="login-btn">Login</button>
+            </div>
+            {error && <div className="alert-credentials">{error}</div>}
+          </div>
+        </form>
+      </div>
+      <footer className="login-footer">Copyright CodeArabi &copy; 2020 </footer>
     </div>
   )
 }

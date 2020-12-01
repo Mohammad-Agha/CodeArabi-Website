@@ -39,7 +39,8 @@ const run = async () => {
   // @route    GET api/blog
   // @desc     Get all blogs
   // @access   public
-  router.get('/', paginate(Blog), (req, res) => {
+  router.get('/', paginate(Blog, Blog.countBlogs, Blog.getPaginatedBlogs), (req, res) => {
+    console.log(res.paginatedResults);
     res.json(res.paginatedResults)
   })
 
@@ -113,6 +114,44 @@ const run = async () => {
     }
   })
 
+  // @route    GET api/blog/featured
+  // @desc     Get the 5 featured blogs
+  // @access   Public
+  router.get('/featured/top', async (req, res) => {
+    try {
+      const blogs = await Blog.getFeaturedBlogs()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
+
+  // @route    GET api/blog/featured
+  // @desc     Get the 5 featured blogs
+  // @access   Public
+  router.get('/featured/count', async (req, res) => {
+    try {
+      const blogs = await Blog.getFeaturedBlogsNumber()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
+
+  // @route    GET api/blog/count/all
+  // @desc     Get blog count
+  // @access   Public
+  router.get('/count/all', async (req, res) => {
+    try {
+      const blogs = await Blog.countBlogs()
+      res.json({ success: true, data: blogs })
+    } catch (error) {
+      console.error(error)
+      res.status(500).send('Server error')
+    }
+  })
 }
 
 run()

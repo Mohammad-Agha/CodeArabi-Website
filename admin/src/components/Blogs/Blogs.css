@@ -1,28 +1,88 @@
+.link-btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #2fb623;
+  margin-bottom: 10px;
+  color: #fff
+}
+
+.link-btn:hover {
+  background-color: #2f8b25;
+}
+
 .pagination {
-  margin: 15px auto;
   display: flex;
+  justify-content: center;
   list-style: none;
   outline: none;
+  margin-bottom: 30px;
 }
 .pagination > .active > a{
-  background-color: #47ccde ;
-  border-color: #47ccde ;
+  background-color: #c0392b ;
+  border-color: #e74c3c ;
   color: #fff;
 }
 .pagination > li > a{
-  border: 1px solid #47ccde ;
+  background-color: #c0392b;
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
 }
+
+.pagination > li > a:hover {
+  background-color: #e74c3c;
+}
+
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-  background-color: #47ccde ;
-  border-color: #47ccde;
+  background-color: #e74c3c ;
+  border-color: #e74c3c;
   outline: none ;
 }
 .pagination > li > a, .pagination > li > span{
-  color: #47ccde
+  color: #fff
 }
 .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
   border-radius: unset
+}
+
+.show-alert {
+  position: absolute;
+  display: inline-block;
+  background-color: #ac3225;
+  color: #fff !important;
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 20px;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  text-align: center;
+  animation: animate-alert 1s normal forwards ease-in-out;
+}
+
+.show-alert-green {
+  position: absolute;
+  display: inline-block;
+  background-color: #2fb623;
+  color: #fff !important;
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 20px;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  text-align: center;
+  animation: animate-alert 1s normal forwards ease-in-out;
+}
+
+@keyframes animate-alert {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
