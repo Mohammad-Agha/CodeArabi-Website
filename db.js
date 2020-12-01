@@ -97,7 +97,7 @@ const initializeDB = async () => {
   }
 
   const getFeaturedBlogs = async () => {
-    const query = `SELECT * FROM blog WHERE featured=1 LIMIT 5`
+    const query = `SELECT * FROM blog WHERE featured=1 ORDER BY created_at DESC LIMIT 6`
     try {
       console.log(query);
       return await db.all(query)

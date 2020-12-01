@@ -1,67 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 function Footer() {
+
+  const [email, setEmail] = useState('')
+
+  const handler = e => {
+    setEmail(e.target.value)
+  }
+
+  const submitForm = async e => {
+    e.preventDefault()
+    // const
+  }
+
   return (
     <div className='footer-container'>
-      
-      <section class='social-media'>
-        <div class='social-media-wrap'>
-          <div class='footer-logo'>
+
+      <section className='footer-subscription'>
+        <p className='footer-subscription-heading'>
+          انضم إلى النشرة الإخبارية لتلقي آخر المدونات
+        </p>
+        <div className='input-areas'>
+          <form onSubmit={submitForm}>
+            <div className="input-areas-contol">
+              <input
+                className='footer-input'
+                name='email'
+                type='email'
+                placeholder='بريدك الالكتروني'
+                onChange={handler}
+                value={email}
+              />
+            </div>
+            <div className="input-areas-contol">
+              <button type="submit" style={{ width: "100%" }} className='btn-link'>
+                إشترك الآن
+          </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section className='social-media'>
+        <div className='social-media-wrap'>
+          <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              CodeArabic
-              <i class='fas fa-code' />
+              &lt;/<span style={{ color: "#90ee906c" }}>عربي</span>.كود&gt;
             </Link>
           </div>
-          <small class='website-rights'>CodeArabic © 2020</small>
-          <div class='social-icons'>
+          <small className='website-rights' > ٢٠٢٠ © كود عربي</small>
+          <div className='social-icons'>
             <Link
-              class='social-icon-link facebook'
+              className='social-icon-link facebook'
               to='/'
               target='_blank'
               aria-label='Facebook'
             >
-              <i class='fab fa-facebook-f' />
+              <i className='fab fa-facebook-f' />
             </Link>
             <Link
-              class='social-icon-link instagram'
+              className='social-icon-link instagram'
               to='/'
               target='_blank'
               aria-label='Instagram'
             >
-              <i class='fab fa-instagram' />
+              <i className='fab fa-instagram' />
             </Link>
             <Link
-              class='social-icon-link youtube'
+              className='social-icon-link youtube'
               to='/'
               target='_blank'
               aria-label='Youtube'
             >
-              <i class='fab fa-youtube' />
+              <i className='fab fa-youtube' />
             </Link>
             <Link
-              class='social-icon-link twitter'
+              className='social-icon-link twitter'
               to='/'
               target='_blank'
               aria-label='Twitter'
             >
-              <i class='fab fa-twitter' />
+              <i className='fab fa-twitter' />
             </Link>
             <Link
-              class='social-icon-link twitter'
+              className='social-icon-link twitter'
               to='/'
               target='_blank'
               aria-label='LinkedIn'
             >
-              <i class='fab fa-linkedin' />
+              <i className='fab fa-linkedin' />
             </Link>
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
+
 
 export default Footer;
