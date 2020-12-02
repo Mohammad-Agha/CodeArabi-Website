@@ -1,0 +1,64 @@
+.blog--container {
+  margin: 100px auto;
+  width: 90%;
+  height: 100%;
+  color: #fff;
+  text-align: right;
+}
+
+.blog-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.blog-tags {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-created, .blog-updated {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-description {
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+  font-style: italic;
+  font-family: 'Almarai' !important;
+}
+
+.blog-content {
+  background-color: #31393f;
+  padding: 2rem;
+}
+
+pre {
+  background-color: #3f4650;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  text-align: left !important;
+}
+
+.copy-div {
+  text-align: left;
+}
+
+.btn-copy {
+  display: inline-block;
+text-decoration: none;
+padding: 10px;
+background-color: #7289da;
+text-align: center;
+border-radius: 4px;
+color: #fff;
+cursor: pointer;
+width: 80px;
+font-size: 1.2rem;
+border: none;
+}
+
+.btn-copy:hover {
+  background-color: #657bcc;
+}
