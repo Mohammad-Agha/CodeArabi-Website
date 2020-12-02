@@ -13,6 +13,7 @@ const Blogs = () => {
   const [alert, setAlert] = useState(false)
   const [search, setSearch] = useState('')
   const [featuredCount, setFeaturedCount] = useState(null)
+  const [initialPage, setInitialPage] = useState(0)
 
   useEffect(() => {
     let isMounted = true;
@@ -68,6 +69,7 @@ const Blogs = () => {
     else {
       setFetchBlogs(!fetchBlogs)
     }
+    setInitialPage(offset)
   }
 
   const changeOrder = async e => {
@@ -152,6 +154,7 @@ const Blogs = () => {
       </table>
       {search === '' ? <ReactPaginate
         previousLabel={"prev"}
+        initialPage={initialPage}
         nextLabel={"next"}
         breakLabel={"..."}
         breakClassName={"break-me"}

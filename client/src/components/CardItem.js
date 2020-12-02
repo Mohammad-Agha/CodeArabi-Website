@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../images/logo.jpg'
 function CardItem(props) {
-  const { id, tag, title, description, created_at } = props.data
+  let { id, tag, title, description, created_at } = props.data
+  if (description.length > 200) {
+    description = description.substring(0, 170) + '...'
+  }
   const date = new Date(created_at)
   const tagArray = tag.split(',')
   return (

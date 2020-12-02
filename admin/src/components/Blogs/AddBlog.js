@@ -76,7 +76,6 @@ const AddBlog = () => {
       setTimeout(() => {
         setFeaturedError(null)
       }, 2000)
-      return
     }
     let tagsArray = []
     const tags = tag.split(',')
