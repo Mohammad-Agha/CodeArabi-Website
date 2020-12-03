@@ -44,7 +44,7 @@ function Blogs() {
     const handlePageClick = (e) => setOffset(e.selected)
 
     return (
-        <div className='cards'>
+        <div className='cards cards-blogs'>
             <h1>المدونات</h1>
             <div className="search-div">
                 <label className="search-label">

@@ -1,6 +1,9 @@
 .cards {
   margin-top: 40px;
-  border-bottom: none;
+}
+
+.cards-blogs {
+  border: none;
 }
 
 .search-div {
@@ -28,6 +31,8 @@
   color: #fff;
   background-color: transparent;
   border: none;
+  outline: none;
+  font-family: 'Lemonada';
 }
 
 input::placeholder {

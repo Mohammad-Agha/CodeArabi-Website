@@ -5,12 +5,6 @@ const fs = require('fs');
 
 const app = express()
 
-const dir = './public/images';
-
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir);
-}
-
 // Middlewares
 app.use(cors())
 app.use(express.json())

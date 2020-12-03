@@ -92,7 +92,7 @@ const AddBlog = () => {
       featured
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/blog`, {
+      await fetch(`http://localhost:5000/api/blog`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -207,7 +207,7 @@ const AddBlog = () => {
       </form>
       <form onSubmit={submitImageForm} className="add-image-form" encType="multipart/form">
         <label htmlFor="file">Choose an Image</label>
-        <input name="fileField" className="input-file" id="file" type="file" multiple name="fileField" />
+        <input name="fileField" className="input-file" id="file" type="file" multiple />
         {error && <span className="image-error">{error}</span>}
         <button className="input-upload">Upload</button>
       </form>
