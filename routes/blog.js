@@ -40,7 +40,6 @@ const run = async () => {
   // @desc     Get all blogs
   // @access   public
   router.get('/', paginate(Blog, Blog.countBlogs, Blog.getPaginatedBlogs), (req, res) => {
-    console.log(res.paginatedResults);
     res.json(res.paginatedResults)
   })
 

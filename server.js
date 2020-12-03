@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-const fs = require('fs');
 
 const app = express()
 
@@ -16,6 +15,6 @@ app.use('/api/subs', require('./routes/subs'))
 app.use('/api/image', require('./routes/image'))
 app.use('/api/social', require('./routes/social'))
 
-const PORT = process.env.PORT || 5000
+const PORT = 5000
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))

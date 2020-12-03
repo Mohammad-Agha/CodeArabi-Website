@@ -52,7 +52,6 @@ const initializeDB = async () => {
     else {
       query = `SELECT * FROM blog LIMIT ${offset}, ${limit}`
     }
-    console.log(query);
     try {
       return await db.all(query)
     } catch (error) {
@@ -99,7 +98,6 @@ const initializeDB = async () => {
   const getFeaturedBlogs = async () => {
     const query = `SELECT * FROM blog WHERE featured=1 ORDER BY created_at DESC LIMIT 6`
     try {
-      console.log(query);
       return await db.all(query)
     } catch (error) {
       console.error(error)
@@ -109,7 +107,6 @@ const initializeDB = async () => {
   const getFeaturedBlogsNumber = async () => {
     const query = `SELECT COUNT(id) AS total FROM blog WHERE featured=1`
     try {
-      console.log(query);
       return await db.get(query)
     } catch (error) {
       console.error(error)

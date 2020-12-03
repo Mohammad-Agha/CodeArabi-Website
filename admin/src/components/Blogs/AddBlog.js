@@ -118,7 +118,6 @@ const AddBlog = () => {
   const submitImageForm = async e => {
     e.preventDefault()
     const files = [...e.target.fileField.files]
-    console.log(files);
     if (files.length === 0) {
       setError('No image was selected')
       setTimeout(() => {

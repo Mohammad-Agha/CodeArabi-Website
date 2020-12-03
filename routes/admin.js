@@ -16,7 +16,6 @@ const run = async () => {
   // @access   Private
   router.get('/', auth, async (req, res) => {
     try {
-      console.log(req.admin);
       const admin = await Admin.getAdminById(req.admin.id)
       res.json(admin);
     } catch (err) {

@@ -61,6 +61,7 @@
   left: 50%;
   text-align: center;
   animation: animate-alert 1s normal forwards ease-in-out;
+  z-index: 99;
 }
 
 .show-alert-green {
