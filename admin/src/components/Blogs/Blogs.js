@@ -84,9 +84,7 @@ const Blogs = () => {
     const perPage = 7
     try {
       const response = await fetch(`http://localhost:5000/api/blog?order=${order}&column=${column}&page=${offset + 1}&limit=${perPage}`)
-      console.log(`http://localhost:5000/api/blog?order=${order}&column=${column}&page=${offset + 1}&limit=${perPage}`);
       const data = await response.json()
-      console.log(data);
       setBlogs(data.results)
     } catch (error) {
       console.log(error);
@@ -107,39 +105,39 @@ const Blogs = () => {
         <thead>
           <tr>
             <th>ID
-              <select onChange={changeOrder} name="id">
-                <option selected value="none" disabled></option>
+              <select defaultValue="none" onChange={changeOrder} name="id">
+                <option value="none" disabled></option>
                 <option value="DESC">↓</option>
                 <option value="ASC">↑</option>
               </select>
             </th>
-            <th>Tag <select onChange={changeOrder} name="tag">
-              <option selected value="none" disabled></option>
+            <th>Tag <select defaultValue="none" onChange={changeOrder} name="tag">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Title <select onChange={changeOrder} name="title">
-              <option selected value="none" disabled></option>
+            <th>Title <select defaultValue="none" onChange={changeOrder} name="title">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Description <select onChange={changeOrder} name="description">
-              <option selected value="none" disabled></option>
+            <th>Description  <select defaultValue="none" onChange={changeOrder} name="description">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Featured ({featuredCount}/6) <select onChange={changeOrder} name="featured">
-              <option selected value="none" disabled></option>
+            <th>Featured  ({featuredCount}/6) <select defaultValue="none" onChange={changeOrder} name="featured">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Created <select onChange={changeOrder} name="created_at">
-              <option selected value="none" disabled></option>
+            <th>Created < select defaultValue="none" onChange={changeOrder} name="created_at">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>
-            <th>Updated <select onChange={changeOrder} name="updated_at">
-              <option selected value="none" disabled></option>
+            <th>Updated < select defaultValue="none" onChange={changeOrder} name="updated_at">
+              <option value="none" disabled></option>
               <option value="DESC">↓</option>
               <option value="ASC">↑</option>
             </select></th>

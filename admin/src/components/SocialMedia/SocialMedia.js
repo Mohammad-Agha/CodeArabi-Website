@@ -29,8 +29,8 @@ const SocialMedia = () => {
     e.target.name === 'github' && setGit(e.target.value)
   }
 
-  const submitBlogForm = async e => {
-    const response = await fetch(`http://localhost:5000/api/social`, {
+  const submitBlogForm = async () => {
+    await fetch(`http://localhost:5000/api/social`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

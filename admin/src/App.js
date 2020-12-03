@@ -8,7 +8,9 @@ import './App.css'
 
 function App() {
   const [redirect, setRedirect] = useState(null)
+
   useEffect(() => {
+    let isMounted = true
     const run = async () => {
       const token = localStorage.getItem('token')
       const response = await fetch('http://localhost:5000/api/admin', {
@@ -24,7 +26,10 @@ function App() {
         setRedirect('/admin/blogs')
       }
     }
-    run()
+    if (isMounted) {
+      run()
+    }
+    return () => { isMounted = false }
   }, [])
 
   const redirectFunc = () => {

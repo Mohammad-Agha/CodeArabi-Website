@@ -5,26 +5,18 @@ import './Navbar.css';
 
 function Navbar() {
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
+    const setButton = useState(true)[1];
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
-    const showButton = () => {
+    useEffect(() => {
         if (window.innerWidth <= 960) {
             setButton(false);
         } else {
             setButton(true);
         }
-    };
-
-
-    useEffect(() => {
-        showButton();
-
-    }, [])
-
-    window.addEventListener('resize', showButton);
+    }, [setButton])
 
 
     return (

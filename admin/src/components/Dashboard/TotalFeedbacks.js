@@ -5,12 +5,16 @@ const TotalFeedbacks = () => {
   const [count, setCount] = useState(null)
 
   useEffect(() => {
+    let isMounted = true
     const run = async () => {
       const response = await fetch(`http://localhost:5000/api/contact/count/all`)
       const data = await response.json()
-      setCount(data.data.total)
+      if (isMounted) {
+        setCount(data.data.total)
+      }
     }
     run()
+    return () => { isMounted = false }
   }, [])
 
   return (
